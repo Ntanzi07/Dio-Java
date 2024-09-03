@@ -6,7 +6,6 @@ public class App{
         double weight = 70.8;
         char gender = 'M';
         boolean likeCoffee = true;
-        //Date dateOfBirth = new Date();
 
         System.out.println("Name: " + name);
         System.out.println("Age: " + age);
@@ -19,9 +18,5 @@ public class App{
         System.out.print(resultado);
 
         System.out.println("\n");
-
-
-    
-
     }
 }
