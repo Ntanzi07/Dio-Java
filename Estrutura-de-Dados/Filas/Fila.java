@@ -8,23 +8,24 @@ public class Fila {
         this.refNoentradaFila = null;
     }
 
-    public void enqueue(No novoNo){
+    public void enqueue(Object obj){
+        No novoNo = new No(obj);
         novoNo.setRefNo(refNoentradaFila);
         refNoentradaFila = novoNo;
     }
 
-    public No first(){
+    public Object first(){
         if(!this.isEmpty()){
             No primeiroNo = refNoentradaFila;
             while (primeiroNo.getRefNo() != null) {
                 primeiroNo = primeiroNo.getRefNo();
             }
-            return primeiroNo;
+            return primeiroNo.getObject();
         }
         return null;
     }
 
-    public No dequeue(){
+    public Object dequeue(){
         if(!this.isEmpty()){
             No primeiroNo = refNoentradaFila;
             No noAuxiliar = refNoentradaFila;
@@ -33,7 +34,7 @@ public class Fila {
                 primeiroNo = primeiroNo.getRefNo();
             }
             noAuxiliar.setRefNo(null);
-            return primeiroNo;
+            return primeiroNo.getObject();
         }
         return null;
     }
