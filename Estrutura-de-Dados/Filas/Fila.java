@@ -51,10 +51,8 @@ public class Fila {
         
         if (!this.isEmpty()) {
             No noAuxiliar = refNoentradaFila;
-            stringRetorno += noAuxiliar;
             while (true){
-                stringRetorno += noAuxiliar;
-                stringRetorno += "---->";
+                stringRetorno += noAuxiliar + "---->";
                 if(noAuxiliar.getRefNo() != null){
                     noAuxiliar = noAuxiliar.getRefNo();
                 }else{

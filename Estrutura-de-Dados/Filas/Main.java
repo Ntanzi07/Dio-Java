@@ -12,5 +12,9 @@ public class Main {
         minhaFila.enqueue(new No("quarto"));
 
         System.out.println(minhaFila);
+
+        System.out.println(minhaFila.dequeue());
+        System.out.println(minhaFila);
+        System.out.println(minhaFila.first());
     }
 }

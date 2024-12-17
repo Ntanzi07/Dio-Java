@@ -31,7 +31,7 @@ public class No {
 
     @Override
     public String toString() {
-        return "No [object=" + this.object + "]\n";
+        return "No [object=" + this.object + "]";
     }
 
     
