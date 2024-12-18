@@ -1,5 +1,7 @@
 package ListaEncadeada;
 
+import java.security.PublicKey;
+
 public class ListaEncadeada<T> {
     
     private No<T> refNoEntrada;
@@ -10,6 +12,20 @@ public class ListaEncadeada<T> {
 
     public ListaEncadeada (No<T> noEntrada){
         refNoEntrada = noEntrada;
+    }
+
+    public void add(T obj){
+        No<T> newNo = new No<T>(obj);
+        
+        if(!this.isEmpty()){
+            No<T> noAuxiliar = refNoEntrada;
+            while (noAuxiliar.getProximoNo() != null) {
+                noAuxiliar = noAuxiliar.getProximoNo();
+            }
+            noAuxiliar.setProximoNo(newNo);
+        }else{
+            refNoEntrada = newNo;
+        }
     }
 
     public int size(){
@@ -29,5 +45,15 @@ public class ListaEncadeada<T> {
 
     public boolean isEmpty(){
         return refNoEntrada == null ? true : false;
+    }
+
+    @Override
+    public String toString() {
+        String str = 
+            "--------------------------\n"
+            + "     ListaEncadeada\n"
+            + "--------------------------\n";
+        str += refNoEntrada.toStringEncadeado();
+        return str;
     }
 }
