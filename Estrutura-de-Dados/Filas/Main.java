@@ -15,7 +15,7 @@ public class Main {
 
 
         System.out.println(minhaFila);
-        System.out.println(minhaSegundaFila);
+        System.out.println(minhaFila);
 
         System.out.println(minhaFila.dequeue());
         System.out.println(minhaFila);
