@@ -26,26 +26,11 @@ public class ListaEncadeada<T> {
         }
     }
 
-    public No<T> getNo(int index){
-        No<T> refAuxiliar = refNoEntrada;
-        No<T> noRetorno = null;
-
-        this.validaIndex(index);
-        
-        for(int i = 0; i <= this.size() - 1; i++){
-            if(i == index){
-                noRetorno = refAuxiliar;
-                break;
-            }
-            refAuxiliar = refAuxiliar.getProximoNo();
-        }
-        return noRetorno;
-    }
-
+    
     public int size(){
         No<T> refComplementar = refNoEntrada;
         int tamanhoDaLista = 0;
-
+        
         if(!this.isEmpty()){
             while (refComplementar.getProximoNo() != null) {
                 tamanhoDaLista++;
@@ -56,24 +41,52 @@ public class ListaEncadeada<T> {
         }
         return 0;
     }
-
+    
     public boolean isEmpty(){
         return refNoEntrada == null ? true : false;
+    }
+    
+    public T get(int index){
+        return getNo(index).getConteudo();
+    }
+    
+    public T remove(int index){
+        No<T> noPivo = this.getNo(index);
+        if(index == 0)
+            refNoEntrada = refNoEntrada.getProximoNo();
+        else
+            this.getNo(index - 1).setProximoNo(noPivo.getProximoNo());
+            
+        return noPivo.getConteudo();
+    }
+    
+    private void validaIndex(int index){
+        int tam = this.size() - 1;
+        if(index > tam)
+        throw new IndexOutOfBoundsException("Não existe conteudo no indece " + "desta lista. O tamanho atual e de " + tam + '.');
+    }
+    
+    private No<T> getNo(int index){
+        this.validaIndex(index);
+        No<T> refAuxiliar = refNoEntrada;
+        No<T> noRetorno = null;
+        for(int i = 0; i <= this.size() - 1; i++){
+            if(i == index){
+                noRetorno = refAuxiliar;
+                break;
+            }
+            refAuxiliar = refAuxiliar.getProximoNo();
+        }
+        return noRetorno;
     }
 
     @Override
     public String toString() {
         String str = 
-              "--------------------------\n"
-            + "      ListaEncadeada\n"
-            + "--------------------------\n";
+        "--------------------------\n"
+        + "      ListaEncadeada\n"
+        + "--------------------------\n";
         str += refNoEntrada.toStringEncadeado();
         return str;
-    }
-
-    private void validaIndex(int index){
-        int tam = this.size() - 1;
-        if(index > tam)
-            throw new IndexOutOfBoundsException("Não existe conteuo no indece " + "desta lista. O tamanho atual e de " + tam + '.');
     }
 }
