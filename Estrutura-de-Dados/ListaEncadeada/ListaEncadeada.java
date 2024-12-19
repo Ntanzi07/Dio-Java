@@ -56,7 +56,7 @@ public class ListaEncadeada<T> {
             refNoEntrada = refNoEntrada.getProximoNo();
         else
             this.getNo(index - 1).setProximoNo(noPivo.getProximoNo());
-            
+
         return noPivo.getConteudo();
     }
     
@@ -70,11 +70,8 @@ public class ListaEncadeada<T> {
         this.validaIndex(index);
         No<T> refAuxiliar = refNoEntrada;
         No<T> noRetorno = null;
-        for(int i = 0; i <= this.size() - 1; i++){
-            if(i == index){
-                noRetorno = refAuxiliar;
-                break;
-            }
+        for(int i = 0; i <= index; i++){
+            noRetorno = refAuxiliar;
             refAuxiliar = refAuxiliar.getProximoNo();
         }
         return noRetorno;
@@ -82,11 +79,7 @@ public class ListaEncadeada<T> {
 
     @Override
     public String toString() {
-        String str = 
-        "--------------------------\n"
-        + "      ListaEncadeada\n"
-        + "--------------------------\n";
-        str += refNoEntrada.toStringEncadeado();
+        String str = refNoEntrada.toStringEncadeado();
         return str;
     }
 }
